@@ -8,16 +8,16 @@ terraform {
 }
 
 provider "google" {
-  credentials = "/Users/poojasingh/.dbt/helical-sol-409813-687472f0ec67.json"
-  project = "helical-sol-409813"
-  region  = "asia-south2"
+  credentials = file(var.credentials)
+  project     = var.project_name
+  region      = var.location
 }
 
 resource "google_storage_bucket" "demo-bucket" {
-  name          = "helical-sol-409813"
-  location      = "asia-south2"
+  name          = var.gcs_bucket_name
+  location      = var.location
   force_destroy = true
-  
+
   lifecycle_rule {
     condition {
       age = 1
@@ -26,4 +26,10 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "AbortIncompleteMultipartUpload"
     }
   }
+}
+
+resource "google_bigquery_dataset" "demo-dataset" {
+  dataset_id = var.bigquery_dataset_name
+  location   = var.location
+
 }
