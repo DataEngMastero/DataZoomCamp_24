@@ -41,3 +41,6 @@ override.tf.json
 terraform.rc
 
 Workshop/dlt_ipykernel*
+
+Module_4/dbt_venv
+Module_4/logs
