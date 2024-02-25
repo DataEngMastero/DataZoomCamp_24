@@ -44,3 +44,8 @@ Workshop/dlt_ipykernel*
 
 Module_4/dbt_venv
 Module_4/logs
+
+Module_5/data/
+Module_5/fhvhv/
+Module_5/*.csv
+
